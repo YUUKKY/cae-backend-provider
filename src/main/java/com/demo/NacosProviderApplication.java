@@ -38,7 +38,7 @@ public class NacosProviderApplication {
             this.restTemplate = restTemplate;
         }
 
-        @RequestMapping(value = "/query", method = RequestMethod.GET)
+        @RequestMapping(value = "/v1/query", method = RequestMethod.GET)
         public UserDataVo getData(@RequestParam(value = "user_name") String userName) {
             return restTemplate.getForObject("http://service-consumer/v1/query?user_name="+userName, UserDataVo.class);
         }
