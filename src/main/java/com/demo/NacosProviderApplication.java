@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @CrossOrigin
 public class NacosProviderApplication {
 
+    @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
@@ -38,7 +40,7 @@ public class NacosProviderApplication {
 
         @RequestMapping(value = "/query", method = RequestMethod.GET)
         public UserDataVo getData(@RequestParam(value = "user_name") String userName) {
-            return restTemplate.getForObject("http://service-consumer/v1/query?user_name=root", UserDataVo.class);
+            return restTemplate.getForObject("http://service-consumer/v1/query?user_name="+userName, UserDataVo.class);
         }
     }
 }
