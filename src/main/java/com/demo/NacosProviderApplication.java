@@ -1,6 +1,7 @@
 package com.demo;
 
 import com.demo.vo.UserDataVo;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,12 +11,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.prefs.BackingStoreException;
+
 /**
  * @author xiaojing
  */
 @SpringBootApplication
 @EnableDiscoveryClient
 @CrossOrigin
+@MapperScan(basePackages = "com.demo.mapper")
 public class NacosProviderApplication {
 
     @LoadBalanced
@@ -30,7 +34,6 @@ public class NacosProviderApplication {
 
     @RestController
     public class TestController {
-
         private final RestTemplate restTemplate;
 
         @Autowired
