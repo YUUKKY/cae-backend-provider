@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.mapper.OrderDataMapper">
 
-    <resultMap id="BaseResultMap" type="com.demo.model.OrderDataDo">
+    <resultMap id="OrderDataResultMap" type="com.demo.model.OrderDataDo">
         <id column="id" property="id"/>
         <result column="updated_at" jdbcType="LONG" property="timestamp"/>
         <result column="quantity" jdbcType="INTEGER" property="quantity"/>
@@ -10,14 +10,13 @@
         <result column="price" jdbcType="INTEGER" property="price"/>
     </resultMap>
 
-    <select id="getAllOrders" resultMap="BaseResultMap" resultType="">
+    <select id="getAllOrders" resultMap="OrderDataResultMap">
         SELECT *
-        FROM orders
+        FROM orders ORDER BY updated_at DESC
     </select>
 
     <insert id="insert">
         INSERT INTO orders(id, status, quantity, updated_at, price)
         VALUES (#{id}, #{status}, #{quantity}, #{timestamp}, #{price})
     </insert>
-
 </mapper>
