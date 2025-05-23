@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -7,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaOrderService {
 
+    @Autowired
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @Value("${order.kafka.topic:orders}")
-    private String topic;
+    public static final String TOPIC = "orders";
 
     public KafkaOrderService(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
@@ -18,7 +19,7 @@ public class KafkaOrderService {
 
     public boolean pushOrder(String orderJson) {
         try {
-            kafkaTemplate.send(topic, orderJson);
+            kafkaTemplate.send(TOPIC, orderJson);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
