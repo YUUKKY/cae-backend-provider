@@ -4,7 +4,7 @@
 
     <resultMap id="OrderDataResultMap" type="com.demo.model.OrderDataDo">
         <id column="id" property="id"/>
-        <result column="updated_at" jdbcType="LONG" property="timestamp"/>
+        <result column="updated_at" jdbcType="BIGINT" property="timestamp"/>
         <result column="quantity" jdbcType="INTEGER" property="quantity"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="price" jdbcType="INTEGER" property="price"/>
