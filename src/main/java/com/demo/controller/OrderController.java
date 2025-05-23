@@ -45,10 +45,15 @@ public class OrderController {
 
                 return ResponseEntity.ok(order);
             } else {
-                return ResponseEntity.status(500).body(Map.of("error", "Failed to push order to Kafka"));
+                return ResponseEntity.status(500).body(new HashMap<String, Object>() {{
+                    put("error", "Failed to push order to Kafka");
+                }});
             }
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(Map.of("error", "Serialization failed"));
+            return ResponseEntity.status(500).body(new HashMap<String, Object>() {{
+                put("error", "Serialization failed");
+            }});
         }
     }
+
 }
