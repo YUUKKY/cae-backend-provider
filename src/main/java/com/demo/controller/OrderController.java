@@ -5,6 +5,7 @@ import com.demo.service.OrderDataService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demo.service.KafkaOrderService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,28 @@ public class OrderController {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+    @CrossOrigin
+    @RequestMapping(value = "/health", method = RequestMethod.GET)
+    public ResponseEntity<?> health() {
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+
+    @CrossOrigin
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    public ResponseEntity<?> getData(@RequestParam(value = "user_name") String userName) {
+        List<OrderDataDo> data = new ArrayList<>();
+        try {
+            data = dataService.getAllOrders();
+            return ResponseEntity.ok(data);
+        } catch (Exception e) {
+            System.out.println("TESTING-ERROR-ORDERS: " + e);
+            return ResponseEntity.status(500).body(e);
+        }
+    }
+
+
+    @CrossOrigin
     @PostMapping("/orders")
     public ResponseEntity<Map<String, Object>> generateOrder() {
         // 生成订单内容
