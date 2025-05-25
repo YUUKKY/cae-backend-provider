@@ -18,9 +18,6 @@ public class OrderController {
     @Autowired
     private OrderDataService dataService;
 
-    @Value("${order_speed:1}")
-    private int orderSpeed; // 读取环境变量，默认1
-
     @Autowired
     private KafkaOrderService kafkaOrderService;
 
@@ -54,7 +51,7 @@ public class OrderController {
         Map<String, Object> order = new HashMap<>();
         order.put("id", UUID.randomUUID().toString());
         order.put("timestamp", System.currentTimeMillis());
-        order.put("quantity", orderSpeed);
+        order.put("quantity", 1);
         order.put("status", "NEW");
         order.put("price", 100 + new Random().nextInt(20));
         order.put("type", "customer");
