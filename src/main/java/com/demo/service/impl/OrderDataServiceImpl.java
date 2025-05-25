@@ -20,6 +20,6 @@ public class OrderDataServiceImpl implements OrderDataService {
 
     @Override
     public void insert(OrderDataDo orderData) {
-        dataMapper.insert(orderData.getId(), orderData.getStatus(), orderData.getQuantity(), orderData.getTimestamp(), orderData.getPrice());
+        dataMapper.insert(orderData.getId(), orderData.getStatus(), orderData.getQuantity(), orderData.getTimestamp(), orderData.getPrice(), orderData.getType());
     }
 }

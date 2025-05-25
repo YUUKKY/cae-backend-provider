@@ -9,5 +9,5 @@ import java.util.List;
 public interface OrderDataMapper {
     List<OrderDataDo> getAllOrders();
 
-    void insert(String id, String status, Integer quantity, Long timestamp, Integer price);
+    void insert(String id, String status, Integer quantity, Long timestamp, Integer price, String type);
 }
