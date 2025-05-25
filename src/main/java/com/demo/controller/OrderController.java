@@ -39,7 +39,7 @@ public class OrderController {
             return ResponseEntity.ok(data);
         } catch (Exception e) {
             System.out.println("TESTING-ERROR-ORDERS: " + e);
-            return ResponseEntity.status(500).body(e);
+            return ResponseEntity.status(500).body(e.getMessage().toString());
         }
     }
 
