@@ -23,14 +23,14 @@ public class OrderController {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/health", method = RequestMethod.GET)
     public ResponseEntity<?> health() {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public ResponseEntity<?> getData() {
         List<OrderDataDo> data = new ArrayList<>();
@@ -44,7 +44,7 @@ public class OrderController {
     }
 
 
-    @CrossOrigin
+    @CrossOrigin(origins = "*")
     @PostMapping("/orders")
     public ResponseEntity<Map<String, Object>> generateOrder() {
         // 生成订单内容
