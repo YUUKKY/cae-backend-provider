@@ -32,7 +32,7 @@ public class OrderController {
 
     @CrossOrigin
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
-    public ResponseEntity<?> getData(@RequestParam(value = "user_name") String userName) {
+    public ResponseEntity<?> getData() {
         List<OrderDataDo> data = new ArrayList<>();
         try {
             data = dataService.getAllOrders();
