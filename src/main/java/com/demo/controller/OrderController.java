@@ -34,6 +34,7 @@ public class OrderController {
         order.put("quantity", orderSpeed);
         order.put("status", "NEW");
         order.put("price", 100 + new Random().nextInt(20));
+        order.put("type", "customer");
 
         try {
             String orderJson = objectMapper.writeValueAsString(order);
@@ -41,7 +42,7 @@ public class OrderController {
 
             if (success) {
                 dataService.insert(new OrderDataDo((String) order.get("id"), (Long) order.get("timestamp"),
-                        (Integer) order.get("quantity"), (String) order.get("status"), (Integer) order.get("price")));
+                        (Integer) order.get("quantity"), (String) order.get("status"), (Integer) order.get("price"), (String) order.get("type")));
 
                 return ResponseEntity.ok(order);
             } else {

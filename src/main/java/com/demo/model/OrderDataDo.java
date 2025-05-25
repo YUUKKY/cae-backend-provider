@@ -11,12 +11,14 @@ public class OrderDataDo implements Serializable {
     private Integer quantity;
     private String status;
     private Integer price;
+    private String type;
 
-    public OrderDataDo(String id, Long timestamp, Integer quantity, String status, Integer price) {
+    public OrderDataDo(String id, Long timestamp, Integer quantity, String status, Integer price, String type) {
         this.id = id;
         this.timestamp = timestamp;
         this.quantity = quantity;
         this.status = status;
         this.price = price;
+        this.type = type;
     }
 }

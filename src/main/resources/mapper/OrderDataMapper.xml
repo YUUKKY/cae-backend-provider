@@ -8,6 +8,7 @@
         <result column="quantity" jdbcType="INTEGER" property="quantity"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
         <result column="price" jdbcType="INTEGER" property="price"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
     </resultMap>
 
     <select id="getAllOrders" resultMap="OrderDataResultMap">
@@ -16,7 +17,7 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO orders(id, status, quantity, updated_at, price)
-        VALUES (#{id}, #{status}, #{quantity}, #{timestamp}, #{price})
+        INSERT INTO orders(id, status, quantity, updated_at, price, type)
+        VALUES (#{id}, #{status}, #{quantity}, #{timestamp}, #{price}, #{type})
     </insert>
 </mapper>
