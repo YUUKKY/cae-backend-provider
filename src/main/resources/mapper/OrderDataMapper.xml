@@ -3,7 +3,7 @@
 <mapper namespace="com.demo.mapper.OrderDataMapper">
 
     <resultMap id="OrderDataResultMap" type="com.demo.model.OrderDataDo">
-        <id column="id" property="id"/>
+        <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="timestamp" jdbcType="BIGINT" property="timestamp"/>
         <result column="quantity" jdbcType="INTEGER" property="quantity"/>
         <result column="status" jdbcType="VARCHAR" property="status"/>
