@@ -51,10 +51,10 @@ public class OrderController {
                 }});
             }
         } catch (Exception e) {
+            System.out.println("TESTING-ERROR: " + e);
             return ResponseEntity.status(500).body(new HashMap<String, Object>() {{
                 put("error", "Serialization failed");
             }});
         }
     }
-
 }
