@@ -5,6 +5,12 @@ spring:
   mvc:
     # 404 交给异常处理器处理
     throw-exception-if-no-handler-found: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET, POST, PUT, DELETE, OPTIONS
+      allowed-headers: "*"
+      exposed-headers: Authorization
+      allow-credentials: true
   web:
     resources:
       # 关闭默认静态资源的映射规则
@@ -16,6 +22,21 @@ spring:
     password: ${RDS_PASSWORD}
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://${RDS_ADDRESS}:${RDS_PORT}/${RDS_DB_NAME}?useSSL=false&serverTimezone=UTC&characterEncoding=UTF8
+
+  kafka:
+    bootstrap-servers: ${KAFKA_ADDRESS}
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  application:
+    name: service-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
 mybatis-plus:
   configuration:
@@ -32,3 +53,6 @@ mybatis-plus:
       logic-not-delete-value: 'NULL'
   # mapper路径位置
   mapper-locations: classpath:mapper/*.xml
+
+server:
+  port: 8070
