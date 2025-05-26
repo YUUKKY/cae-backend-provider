@@ -19,7 +19,6 @@ import java.util.prefs.BackingStoreException;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@CrossOrigin
 @EnableScheduling
 @MapperScan(basePackages = "com.demo.mapper")
 public class NacosProviderApplication {

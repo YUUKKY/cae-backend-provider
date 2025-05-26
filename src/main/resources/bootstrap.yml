@@ -5,12 +5,6 @@ spring:
   mvc:
     # 404 交给异常处理器处理
     throw-exception-if-no-handler-found: true
-    cors:
-      allowed-origins: "*"
-      allowed-methods: GET, POST, PUT, DELETE, OPTIONS
-      allowed-headers: "*"
-      exposed-headers: Authorization
-      allow-credentials: true
   web:
     resources:
       # 关闭默认静态资源的映射规则
