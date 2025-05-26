@@ -13,8 +13,11 @@
 
     <select id="getAllOrders" resultMap="OrderDataResultMap">
         SELECT *
-        FROM orders ORDER BY timestamp DESC
+        FROM orders
+        ORDER BY timestamp DESC
+            LIMIT 50
     </select>
+
 
     <insert id="insert">
         INSERT INTO orders(id, status, quantity, timestamp, price, type)
