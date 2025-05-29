@@ -42,7 +42,7 @@ public class KafkaOrderService {
     }
 
     // 每5秒自动生产并推送消息
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 8000)
     public void produceMessage() {
         // 生成订单内容
         Map<String, Object> order = new HashMap<>();
